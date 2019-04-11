@@ -6,7 +6,7 @@ class ntp::service(
   ){
     service {'ntp_service':
       ensure     => $service_ensure,
-      enable     => $service_ensure,
+      enable     => $service_enable,
       name       => $service_name,
       hasrestart => true,
       hasstatus  => true,
