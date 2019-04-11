@@ -1,9 +1,10 @@
 function ntp::data(){
   $base_params = {
-    'ntp::package_ensure' => 'present',
-    'ntp::service_ensure' => 'running',
-    'ntp::service_enable' => true,
-  }
+    'ntp::package_ensure'  => 'present',
+    'ntp::service_ensure'  => 'running',
+    'ntp::service_enable'  => true,
+    'ntp::servers'         => ['0.centos.pool.ntp.org iburst','1.centos.pool.ntp.org iburst','2.centos.pool.ntp.org iburst']
+   }
 
   case $facts['os']['family']{
     'Debian':{
