@@ -3,7 +3,7 @@ function ntp::data(){
     'ntp::package_ensure'  => 'present',
     'ntp::service_ensure'  => 'running',
     'ntp::service_enable'  => true,
-    'ntp::servers'         => ['0.centos.pool.ntp.org iburst','1.centos.pool.ntp.org iburst','2.centos.pool.ntp.org iburst']
+    'ntp::servers'         => ['0.centos.pool.ntp.org iburst','1.centos.pool.ntp.org iburst','2.centos.pool.ntp.org iburst'],
    }
 
   case $facts['os']['family']{
@@ -17,7 +17,7 @@ function ntp::data(){
     'Redhat':{
       $os_params = {
         'ntp::package_name'    => 'ntp',
-        'ntp::package_service' => 'ntpd',
+        'ntp::service_name'        => 'ntpd',
       }
     }
 
@@ -25,5 +25,5 @@ function ntp::data(){
       fail("${facts[operatingsystem]} is not supported")
     }
   }
-    $base_params + $os_params
+  $base_params + $os_params
 }
